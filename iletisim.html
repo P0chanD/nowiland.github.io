@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAN NIMBUS İletişim</title>
+
+  <!-- TAN NIMBUS font (CDN ve yerel) -->
+  <link href="https://fonts.cdnfonts.com/css/tan-nimbus" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'TAN NIMBUS';
+      src: url('/storage/emulated/0/TAN-NIMBUS.ttf') format('truetype');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'TAN NIMBUS', sans-serif;
+    }
+
+    body {
+      background-color: #f3f3f3;
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+      padding: 15px 20px;
+      border-radius: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: background 0.3s;
+      display: block;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: transparent;
+      min-width: 160px;
+      border-radius: 10px;
+      z-index: 100;
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+    }
+
+    .dropdown-menu li a {
+      padding: 10px 15px;
+      white-space: nowrap;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .nav-links.showing {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .dropdown-menu {
+        position: static;
+      }
+    }
+
+    /* Merkezi hizalama */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .contact-container {
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    /* Buton ve diğer öğeler için stil */
+    button {
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="/storage/emulated/0/NL.png" alt="Logo" /></a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li class="dropdown">
+        <a href="#" id="dropdown-toggle">Koleksiyonlar</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="dublajlar.html">Dublajlar</a></li>
+          <li><a href="#">Seslendirmeler</a></li>
+          <li><a href="#">Animasyonlar</a></li>
+          <li><a href="#">Mangalar</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Hakkımızda</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <!-- İletişim Sayfası İçeriği -->
+  <main>
+    <section>
+      <h1 style="font-size: 48px; color: purple;">İletişime Geçin</h1>
+      <p style="font-size: 20px; color: pink; padding-bottom:30px; padding-top:20px">Bizimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.</p>
+    </section>
+
+    <!-- İletişim Formu ve Bilgiler Tek Div İçinde -->
+    <div class="contact-container">
+      <form action="mailto:furunt00@gmail.com" method="POST" enctype="multipart/form-data">
+        <div style="margin-bottom: 15px; width: 100%;">
+          <label for="name">Adınız:</label>
+          <input type="text" id="name" name="name" required placeholder="Adınızı girin" />
+        </div>
+        <div style="margin-bottom: 15px; width: 100%;">
+          <label for="email">E-posta:</label>
+          <input type="email" id="email" name="email" required placeholder="E-posta adresinizi girin" />
+        </div>
+        <div style="margin-bottom: 15px; width: 100%;">
+          <label for="message">Mesajınız:</label>
+          <textarea id="message" name="message" required placeholder="Mesajınızı buraya yazın"></textarea>
+        </div>
+        <button type="submit">Gönder</button>
+      </form>
+
+      <section class="contact-info">
+        <h2 style="color: white; margin-bottom: 15px;">İletişim Bilgilerimiz</h2>
+        <p style="color: red; margin: 5px;">Telefon:</p>
+        <p style="color: white;">+90 555 555 55 55</p>
+        <p style="color: red; margin: 5px;">E-posta:</p>
+        <p style="color: white;">nowiland@gmail.com</p>
+        <p style="color: red; margin: 5px;">Adres:</p>
+        <p style="color: white;">İstanbul, Türkiye</p>
+      </section>
+    </div>
+
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("mobile-menu");
+      const navLinks = document.querySelector(".nav-links");
+      const dropdownToggle = document.getElementById("dropdown-toggle");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+
+      // Mobil menü
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("showing");
+      });
+
+      // Dropdown aç/kapat
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        dropdownMenu.style.display =
+          dropdownMenu.style.display === "block" ? "none" : "block";
+      });
+
+      // Sayfa dışına tıklanırsa dropdown'ı kapat
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".dropdown")) {
+          dropdownMenu.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

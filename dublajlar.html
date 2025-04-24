@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAN NIMBUS Dublaj Afişleri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    @font-face {
+      font-family: 'TAN NIMBUS';
+      src: url('/storage/emulated/0/TAN-NIMBUS.ttf') format('truetype');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'TAN NIMBUS', sans-serif;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: background 0.3s;
+      display: block;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 20px;
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+      border-radius: 10px;
+      z-index: 100;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 15px;
+      display: block;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-links.showing {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      color: #8e2de2;
+      margin: 40px 0 20px;
+      font-size: 32px;
+    }
+
+    .afis-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .afis {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .afis:hover {
+      transform: scale(1.03);
+    }
+
+    .afis img {
+      width: 100%;
+      aspect-ratio: 718 / 1280;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="/storage/emulated/0/NL.png" alt="Logo" /></a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li class="dropdown">
+        <a href="#" id="dropdown-toggle">Koleksiyonlar</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="dublajlar.html">Dublajlar</a></li>
+          <li><a href="#">Seslendirmeler</a></li>
+          <li><a href="#">Animasyonlar</a></li>
+          <li><a href="#">Mangalar</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Hakkımızda</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <h1>Dublajlar</h1>
+
+  <div class="afis-container">
+    <div class="afis">
+      <img src="/storage/emulated/0/BSD_S1.jpg" alt="Anime Dublajı">
+    </div>
+    <div class="afis">
+      <img src="/storage/emulated/0/GOJO_TOJI.png" alt="Kısa Film Dublajı">
+    </div>
+    <div class="afis">
+      <img src="/storage/emulated/0/BSD_S1.jpg" alt="Belgesel Dublajı">
+    </div>
+    <div class="afis">
+      <img src="/storage/emulated/0/BSD_S1.jpg" alt="Sosyal Medya Dublajı">
+    </div>
+      <div class="afis">
+      <img src="/storage/emulated/0/BSD_S1.jpg" alt="Sosyal Medya Dublajı">
+    </div>
+      <div class="afis">
+      <img src="/storage/emulated/0/BSD_S1.jpg" alt="Sosyal Medya Dublajı">
+    </div>
+  </div>
+    
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("mobile-menu");
+      const navLinks = document.getElementById("nav-links");
+      const dropdownToggle = document.getElementById("dropdown-toggle");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("showing");
+      });
+
+      let dropdownOpen = false;
+
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        dropdownOpen = !dropdownOpen;
+        dropdownMenu.style.display = dropdownOpen ? "block" : "none";
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".dropdown")) {
+          dropdownMenu.style.display = "none";
+          dropdownOpen = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

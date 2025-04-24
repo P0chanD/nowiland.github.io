@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAN NIMBUS Navbar</title>
+  <link rel="icon" type="png" href="/storage/emulated/0/NL.png" />
+
+  <!-- TAN NIMBUS font (CDN ve yerel) -->
+  <link href="https://fonts.cdnfonts.com/css/tan-nimbus" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'TAN NIMBUS';
+      src: url('/storage/emulated/0/TAN-NIMBUS.ttf') format('truetype');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'TAN NIMBUS', sans-serif;
+    }
+
+    body {
+      background-color: #f3f3f3;
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+      padding: 15px 20px;
+      border-radius: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: background 0.3s;
+      display: block;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: transparent;
+      min-width: 160px;
+      border-radius: 10px;
+      z-index: 100;
+      background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+    }
+
+    .dropdown-menu li a {
+      padding: 10px 15px;
+      white-space: nowrap;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .nav-links.showing {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .dropdown-menu {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="/storage/emulated/0/NL.png" alt="Logo" /></a>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li class="dropdown">
+        <a href="#" id="dropdown-toggle">Koleksiyonlar</a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="dublajlar.html">Dublajlar</a></li>
+          <li><a href="#">Seslendirmeler</a></li>
+          <li><a href="#">Animasyonlar</a></li>
+          <li><a href="#">Mangalar</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Hakkımızda</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("mobile-menu");
+      const navLinks = document.querySelector(".nav-links");
+      const dropdownToggle = document.getElementById("dropdown-toggle");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+
+      // Mobil menü
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("showing");
+      });
+
+      // Dropdown aç/kapat
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        dropdownMenu.style.display =
+          dropdownMenu.style.display === "block" ? "none" : "block";
+      });
+
+      // Sayfa dışına tıklanırsa dropdown'ı kapat
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".dropdown")) {
+          dropdownMenu.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+  
+  <main style="padding: 40px; font-family: 'TAN NIMBUS', sans-serif;">
+  <!-- Başlık ve kısa açıklama -->
+  <section style="text-align: center; margin-bottom: 40px;">
+    <h1 style="font-size: 48px; color: #8e2de2;">Hoş Geldiniz</h1>
+    <p style="font-size: 20px; color: #555;">Yaratıcılığın ve sesin buluştuğu yer: Dublaj, Seslendirme ve Animasyon Koleksiyonları</p>
+  </section>
+
+  <!-- Hakkımızda Kısmı -->
+  <section style="max-width: 800px; margin: auto; text-align: center; margin-bottom: 60px;">
+    <h2 style="color: #ff6ec4; margin-bottom: 15px;">Biz Kimiz?</h2>
+    <p style="font-size: 18px; color: #333;">
+      Nowiland olarak seslendirme sanatını, animasyon dünyasını ve özgün içerik kültürünü sizlere başarılı bir şekilde sunuyoruz. Kaliteli içeriklerimizle eğlenceli bir keşif yolculuğuna çıkmaya hazır olun!
+    </p>
+  </section>
+
+  <!-- Butonla Koleksiyonlara geçiş -->
+  <div style="text-align: center; margin-bottom: 60px;">
+    <a href="#" style="background: linear-gradient(90deg, #8e2de2, #ff6ec4); color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-size: 18px;">Koleksiyonlara Göz At</a>
+  </div>
+
+  <!-- Öne çıkan içerikler -->
+  <section style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+    <div style="background: white; padding: 20px; border-radius: 15px; width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+      <h3 style="color: #8e2de2;">Dublajlar</h3>
+      <p>Yetenekli insanlarla doldurduğumuz kadro ile beraber sizlere, gayriresmi ve resmi projelerimizi elimizden geldiğince güzel ve başarılı bir şekilde sunmaya çalışıyoruz.</p>
+    </div>
+    <div style="background: white; padding: 20px; border-radius: 15px; width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+      <h3 style="color: #ff6ec4;">Seslendirmeler</h3>
+      <p>Reklam, belgesel, radyo dramalar, kitap seslendirmesi ve özgün içerikleri sizlere sunuyoruz.</p>
+    </div>
+    <div style="background: white; padding: 20px; border-radius: 15px; width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+      <h3 style="color: #8e2de2;">Animasyonlar</h3>
+      <p>Başka insanlaeın yapmış olduğu kısa veya uzun animasyonları, onlara destek olmak amacıyla yaptıkları içerikleri sitemize koyup sizlere sumuyoruz.</p>
+    </div>
+    
+  </section>
+</main>
+
+<!-- Yeni Başlık ve Ek İçerik -->
+<section style="text-align: center; margin: 80px 0 40px 0;">
+  <h2 style="font-size: 36px; color: #8e2de2;">Yeni Projelerimiz</h2>
+</section>
+
+<section style="display: flex; justify-content: center; margin-bottom: 40px;">
+  <div style="background: white; padding: 20px; border-radius: 15px; width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+    <h3 style="color: #ff6ec4;">Nowiland Başvurusu</h3>
+    <p>Animasyonlarınızı, dublajlarınızı ve seslendirmelerinizi bizimle iletişime geçerek, sitemizde yayınlayabiliriz.</p>
+  </div>
+</section>
+
+<!-- İletişim Butonu -->
+<div style="text-align: center; margin-bottom: 80px;">
+  <a href="#" style="background: linear-gradient(90deg, #ff6ec4, #8e2de2); color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-size: 18px;">İletişime Geç</a>
+</div>
+
+</body>
+</html>
